@@ -1,0 +1,92 @@
+{
+  "_type": "Project",
+  "_id": "AAAAAAGXcYdQvQ0AAAAA",
+  "name": "Sistema de Pedidos en Línea",
+  "ownedElements": [
+    {
+      "_type": "UMLModel",
+      "_id": "AAAAAAGXcYdQvQ1AAAAA",
+      "name": "Model",
+      "ownedElements": [
+        {
+          "_type": "UMLDeploymentDiagram",
+          "_id": "AAAAAAGXcYdQvQ2AAAAA",
+          "name": "Deployment_SistemaPedidos",
+          "ownedViews": []
+        },
+        {
+          "_type": "UMLNode",
+          "_id": "AAAAAAGXcYdQvQ3AAAAA",
+          "name": "Cliente",
+          "ownedElements": [
+            {
+              "_type": "UMLArtifact",
+              "_id": "AAAAAAGXcYdQvQ4AAAAA",
+              "name": "App Web / Móvil"
+            }
+          ]
+        },
+        {
+          "_type": "UMLNode",
+          "_id": "AAAAAAGXcYdQvQ5AAAAA",
+          "name": "ServidorWeb",
+          "ownedElements": [
+            {
+              "_type": "UMLArtifact",
+              "_id": "AAAAAAGXcYdQvQ6AAAAA",
+              "name": "Backend (API + Lógica)"
+            }
+          ]
+        },
+        {
+          "_type": "UMLNode",
+          "_id": "AAAAAAGXcYdQvQ7AAAAA",
+          "name": "BaseDeDatos",
+          "ownedElements": [
+            {
+              "_type": "UMLArtifact",
+              "_id": "AAAAAAGXcYdQvQ8AAAAA",
+              "name": "MySQL / PostgreSQL"
+            }
+          ]
+        },
+        {
+          "_type": "UMLNode",
+          "_id": "AAAAAAGXcYdQvQ9AAAAA",
+          "name": "Cajero",
+          "ownedElements": [
+            {
+              "_type": "UMLArtifact",
+              "_id": "AAAAAAGXcYdQvRAAAA",
+              "name": "Interfaz de Caja"
+            }
+          ]
+        },
+        {
+          "_type": "UMLNode",
+          "_id": "AAAAAAGXcYdQvRBAAAA",
+          "name": "Cocina",
+          "ownedElements": [
+            {
+              "_type": "UMLArtifact",
+              "_id": "AAAAAAGXcYdQvRCAAAA",
+              "name": "Pantalla / Impresora"
+            }
+          ]
+        },
+        {
+          "_type": "UMLNode",
+          "_id": "AAAAAAGXcYdQvRDAAAA",
+          "name": "Administrador",
+          "ownedElements": [
+            {
+              "_type": "UMLArtifact",
+              "_id": "AAAAAAGXcYdQvREAAAA",
+              "name": "Panel de Administración"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+---
+title: "Herencia"
+author: "Axel Valenzuela"
+format: pdf
+---
+```{python}
+# Practica 4 Herencia (versión para Quarto/PDF)
+class ticket:
+    def __init__(self,ID,tipo,prioridad,estado="pendiente"):
+        self.ID = ID
+        self.tipo = tipo
+        self.prioridad = prioridad
+        self.estado = estado
+
+    def __str__(self):
+        return f"Ticket {self.ID} | Tipo: {self.tipo} | Prioridad: {self.prioridad} | Estado: {self.estado}"
+
+
+class empleado:
+    def __init__(self,nombre):
+        self.nombre = nombre
+    def trabajar_en_ticket(self,ticket):
+        print(f"El empleado {self.nombre} revisa el ticket {ticket.ID}")
+
+
+class desarrollador(empleado):
+    def trabajar_en_ticket(self,ticket):
+        if ticket.tipo == "software":
+            ticket.estado = "resuelto"
+            print(f"El ticket {ticket.ID} fue resuelto por {self.nombre}") 
+        else:
+            print("Este ticket no puede ser resuelto por un desarrollador.") 
+
+
+class tester(empleado):
+    def trabajar_en_ticket(self,ticket):
+        if ticket.tipo == "prueba":
+            ticket.estado = "resuelto"
+            print(f"El ticket {ticket.ID} fue resuelto por {self.nombre}") 
+        else:
+            print("Este ticket no puede ser resuelto por un tester.")
+
+
+class projectmanager(empleado):
+    def asignar_ticket(self,ticket,empleado):
+        print(f"{self.nombre} asignó el ticket {ticket.ID} al empleado {empleado.nombre}")
+        empleado.trabajar_en_ticket(ticket)                                               
+
+
+# instancias
+tickets = []
+developer1 = desarrollador("Carlitos")
+tester1 = tester("Juanillo")
+pm = projectmanager("Marianita")
+
+# Simulación de flujo (sin input)
+print(">>> Creando tickets...")
+tickets.append(ticket(1, "software", "alta"))
+tickets.append(ticket(2, "prueba", "media"))
+tickets.append(ticket(3, "software", "baja"))
+
+print("\n>>> Tickets creados:")
+for t in tickets:
+    print(t)
+
+print("\n>>> Asignando tickets...")
+pm.asignar_ticket(tickets[0], developer1)  # software → dev
+pm.asignar_ticket(tickets[1], tester1)     # prueba → tester
+pm.asignar_ticket(tickets[2], tester1)     # software → tester (fallará)
+
+print("\n>>> Estado final de los tickets:")
+for t in tickets:
+    print(t)
+
+
+```
+

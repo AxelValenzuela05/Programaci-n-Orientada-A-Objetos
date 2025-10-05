@@ -1,0 +1,103 @@
+#practica 2 clases,objetos,metodos y atributos
+
+#creacion de clase
+class Persona:
+    def __init__(self,nombre,apellido,edad):
+        
+        #creacion de atributos
+        self.nombre=nombre
+        self.apellido=apellido
+        self.edad=edad
+        self.__cuenta = None 
+    def presentarse(self):
+            print(f"Hola, mi nombre es {self.nombre} {self.apellido} y tengo {self.edad} años.")
+
+    def cumplir_anios(self):
+            self.edad += 1
+            print(f"Feliz cumpleaños {self.nombre}! Ahora tienes {self.edad} años.")
+
+    def asignar_cuenta(self, cuenta):
+            self.__cuenta = cuenta
+            print(f" {self.nombre} ahora tine una cuenta bancaria")
+    def consultar_saldo(self):
+        if self.__cuenta:
+            print(f"El saldo de la cuenta de {self.nombre} es: ${self.__cuenta.mostrar_saldo()} ")
+        else:
+            print(f"{self.nombre} no tiene una cuenta bancaria asignada.")
+
+
+
+
+
+
+class cuenta_bancaria:
+    def __init__(self,num_cuenta,saldo):
+        self.num_cuenta=num_cuenta
+        self.__saldo=saldo#datos privados
+
+    def mostrar_saldo(self):
+        return self.__saldo
+    
+    def depositar(self,Cantidad):
+        if Cantidad>0:
+            self.__saldo+=Cantidad
+            print(f"Deposito exitoso de {Cantidad}. Nuevo saldo: {self.__saldo}")
+        else:
+            print("El monto a depositar debe ser positivo.")
+    
+    def retirar(self,Cantidad):
+        if 0<Cantidad<=self.__saldo:
+            self.__saldo-=Cantidad
+            print(f"Retiro exitoso de {Cantidad}. Nuevo saldo: {self.__saldo}")
+        else:
+            print("Fondos insuficientes o monto invalido para retirar.")
+
+#creacion de objeto o intancia de una clase
+estudiante1=Persona("Addy","Maax",19)
+#estudiante2=Persona("Juan","Perez",22)
+
+cuenta1=cuenta_bancaria("001",500)
+estudiante1.asignar_cuenta(cuenta1)
+
+estudiante1.consultar_saldo()
+cuenta1.depositar(200)
+cuenta1.retirar(100)
+
+#estudiante1.presentarse()
+#estudiante2.presentarse()
+
+"""""
+#ejercicio 1
+#crear una clase, objeto, min 3 atributos y min 3 metodos distintos
+class laptop:
+    def __init__(self,procesador,Precio,pantalla):
+        
+        #creacion de atributos
+        self.procesador=procesador
+        self.precio=Precio
+        self.pantalla=pantalla
+        self.encendida = False
+    # Métodos  
+    def Carateristicas(self):
+            print(f"Laptop con {self.procesador} y con {self.precio} y tengo una {self.pantalla}")
+    
+    def encender(self):
+        if not self.encendida:
+            self.encendida = True
+            print(f"La laptop con procesador {self.procesador} se ha encendido.")
+        else:
+            print("La laptop ya estaba encendida.")
+    
+    def apagar(self):
+        if self.encendida:
+            self.encendida = False
+            print("La laptop se ha apagado.")
+        else:
+            print("La laptop ya estaba apagada.")
+
+#creacion de objeto o intancia de una clase
+laptop1=Persona("intel i9",24000,"15.6 pulgadas y 240hz")
+laptop1.encender()
+laptop1.apagar()
+laptop1.Carateristicas()
+"""

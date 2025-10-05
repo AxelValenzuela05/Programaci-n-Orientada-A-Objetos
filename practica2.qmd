@@ -1,0 +1,61 @@
+---
+title: "Práctica 2: Clases, objetos, métodos y atributos"
+author: "Axel Valenzuela"
+output: pdf_document
+---
+
+```{python}
+#practica 2 clases,objetos,metodos y atributos
+
+class Persona:
+    def __init__(self,nombre,apellido,edad):
+        self.nombre=nombre
+        self.apellido=apellido
+        self.edad=edad
+        self.__cuenta = None 
+    def presentarse(self):
+        print(f"Hola, mi nombre es {self.nombre} {self.apellido} y tengo {self.edad} años.")
+
+    def cumplir_anios(self):
+        self.edad += 1
+        print(f"Feliz cumpleaños {self.nombre}! Ahora tienes {self.edad} años.")
+
+    def asignar_cuenta(self, cuenta):
+        self.__cuenta = cuenta
+        print(f" {self.nombre} ahora tine una cuenta bancaria")
+    def consultar_saldo(self):
+        if self.__cuenta:
+            print(f"El saldo de la cuenta de {self.nombre} es: ${self.__cuenta.mostrar_saldo()} ")
+        else:
+            print(f"{self.nombre} no tiene una cuenta bancaria asignada.")
+
+class cuenta_bancaria:
+    def __init__(self,num_cuenta,saldo):
+        self.num_cuenta=num_cuenta
+        self.__saldo=saldo
+
+    def mostrar_saldo(self):
+        return self.__saldo
+    
+    def depositar(self,Cantidad):
+        if Cantidad>0:
+            self.__saldo+=Cantidad
+            print(f"Deposito exitoso de {Cantidad}. Nuevo saldo: {self.__saldo}")
+        else:
+            print("El monto a depositar debe ser positivo.")
+    
+    def retirar(self,Cantidad):
+        if 0<Cantidad<=self.__saldo:
+            self.__saldo-=Cantidad
+            print(f"Retiro exitoso de {Cantidad}. Nuevo saldo: {self.__saldo}")
+        else:
+            print("Fondos insuficientes o monto invalido para retirar.")
+
+estudiante1=Persona("Addy","Maax",19)
+cuenta1=cuenta_bancaria("001",500)
+estudiante1.asignar_cuenta(cuenta1)
+
+estudiante1.consultar_saldo()
+cuenta1.depositar(200)
+cuenta1.retirar(100)
+```
